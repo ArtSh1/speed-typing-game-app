@@ -1,4 +1,4 @@
-const RANDOM_QUOTE_API = "http://api.quotable.io/random";
+const RANDOM_QUOTE_API = "https://api.quotable.io/random";
 
 const timer = document.getElementById("timer");
 const quoteDisplayElement = document.getElementById("quoteDisplay");
