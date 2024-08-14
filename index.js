@@ -1,4 +1,11 @@
 const RANDOM_QUOTE_API = "https://api.quotable.io/random";
+const MOCK_QUOTES = [
+  "The quick brown fox jumps over the lazy dog.",
+  "To be or not to be, that is the question.",
+  "A journey of a thousand miles begins with a single step.",
+  "All that glitters is not gold.",
+  "The only thing we have to fear is fear itself.",
+];
 
 const timer = document.getElementById("timer");
 const quoteDisplayElement = document.getElementById("quoteDisplay");
@@ -50,9 +57,14 @@ async function getRandomQuote() {
     const data = await response.json();
     return data.content;
   } catch (error) {
-    console.error(error);
-    return "Error fetching quote";
+    console.error("Error fetching quote:", error);
+    return getMockedQuote();
   }
+}
+
+function getMockedQuote() {
+  const randomIndex = Math.floor(Math.random() * MOCK_QUOTES.length);
+  return MOCK_QUOTES[randomIndex];
 }
 
 async function renderNewQuote() {
