@@ -10,8 +10,11 @@ const MOCK_QUOTES = [
 const timer = document.getElementById("timer");
 const quoteDisplayElement = document.getElementById("quoteDisplay");
 const quoteInputElement = document.getElementById("quoteInput");
+const scoreElement = document.getElementById("score");
 
 let interval;
+let score = 0;
+let startTime;
 
 quoteInputElement.addEventListener("input", handleInput);
 
@@ -22,6 +25,8 @@ function handleInput() {
   const correct = checkCorrectness(arrayQuote, arrayValue);
 
   if (correct && arrayValue.length === arrayQuote.length) {
+    score++;
+    scoreElement.innerText = score;
     stopTimer();
     renderNewQuote();
   }
@@ -79,7 +84,6 @@ async function renderNewQuote() {
   startTimer();
 }
 
-let startTime;
 function startTimer() {
   timer.innerText = 0;
   startTime = new Date();
